@@ -9,40 +9,29 @@ let upperChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 let symbols = '!@#$%^&*'
 let numbers = '1234567890'
 
-// function promptMe(){
-  document.getElementById("generate").onclick = function()
-{
-  paswLength = prompt("Enter Password length (8 - 128) characters",8);
-  while (paswLength < 8 || paswLength >128) {
-     
-  }
-  }
-let result=confirm("Do you want lower case charaters?");
- 
-
-
-
-
-
-
-// final pw string
 let charset = ''
 
 function generatePassword() {
+  paswLength = prompt("Enter Password length (8 - 128) characters", 8);
+  let lower = confirm("Do you want lower case charaters?");
   var length = paswLength
-  if (lowerChars === true) {
-    charset = lowerChars
+  if (lower === true) {
+    charset += lowerChars
+    console.log (charset)
   }
-  if (upperChars === true) {
-    charset = upperChars
+  let upper = confirm("Do you want upper case charaters?");
+  if (upper === true) {
+    charset += upperChars
   }
-  if (useChars === true && useNumbers === true) {
-    charset = chars + numbers
+  let sym = confirm ("Do you want symbols?")
+  if (sym === true) {
+    charset += symbols
   }
-  if (useChars === true && useNumbers === true && useSymbols === true) {
-    charset = chars + numbers + symbols
+  let num = confirm("Do you want numbers?")
+  if (num === true) {
+      charset += numbers
   }
-  console.log(charset)
+  
   retVal = "";
   for (var i = 0, n = charset.length; i < length; ++i) {
     retVal += charset.charAt(Math.floor(Math.random() * n));
@@ -50,10 +39,8 @@ function generatePassword() {
   return retVal;
 }
 
-let submit = documentGetElementById('generate')
 
-// fake code below
-submit.click(generatePassword())
+
 
 
 
@@ -71,4 +58,5 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+  generateBtn.addEventListener("click", writePassword) 
+  ;
